@@ -1,6 +1,9 @@
-import { sideProject } from '../data/portfolio'
+import { useLocale } from '../i18n/LocaleContext'
 
 export function SideProject() {
+  const { content } = useLocale()
+  const { sideProject } = content
+
   return (
     <section id="side-project" className="border-t border-white/5 px-6 py-24">
       <div className="mx-auto max-w-5xl">
@@ -8,7 +11,7 @@ export function SideProject() {
           Personal Project
         </h2>
         <p className="mb-12 text-3xl font-bold tracking-tight sm:text-4xl">
-          個人開発
+          {sideProject.sectionTitle}
         </p>
 
         <article className="relative overflow-hidden glass rounded-2xl border-dashed border-white/15 p-8 sm:p-10">

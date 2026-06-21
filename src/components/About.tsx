@@ -1,6 +1,9 @@
-import { about, profile } from '../data/portfolio'
+import { useLocale } from '../i18n/LocaleContext'
 
 export function About() {
+  const { content } = useLocale()
+  const { profile, about } = content
+
   return (
     <section id="about" className="px-6 py-24">
       <div className="mx-auto max-w-5xl">
@@ -8,7 +11,7 @@ export function About() {
           About
         </h2>
         <p className="mb-12 text-3xl font-bold tracking-tight sm:text-4xl">
-          私について
+          {about.title}
         </p>
 
         <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
@@ -21,24 +24,24 @@ export function About() {
           <div className="glass rounded-2xl p-8">
             <dl className="space-y-6">
               <div>
-                <dt className="mb-1 text-sm text-muted">経験年数</dt>
-                <dd className="font-medium text-white">フルスタック開発 {profile.experienceDuration}</dd>
+                <dt className="mb-1 text-sm text-muted">{about.experienceYears}</dt>
+                <dd className="font-medium text-white">{about.experienceYearsValue}</dd>
               </div>
               <div>
-                <dt className="mb-1 text-sm text-muted">専門領域</dt>
-                <dd className="font-medium text-white">Ruby on Rails / フルスタック開発</dd>
+                <dt className="mb-1 text-sm text-muted">{about.specialty}</dt>
+                <dd className="font-medium text-white">{about.specialtyValue}</dd>
               </div>
               <div>
-                <dt className="mb-1 text-sm text-muted">開発スタイル</dt>
-                <dd className="font-medium text-white">アジャイル・保守運用まで一貫対応</dd>
+                <dt className="mb-1 text-sm text-muted">{about.devStyle}</dt>
+                <dd className="font-medium text-white">{about.devStyleValue}</dd>
               </div>
               <div>
-                <dt className="mb-1 text-sm text-muted">所在地</dt>
+                <dt className="mb-1 text-sm text-muted">{about.locationLabel}</dt>
                 <dd className="font-medium text-white">{profile.location}</dd>
               </div>
               {profile.email && (
                 <div>
-                  <dt className="mb-1 text-sm text-muted">メール</dt>
+                  <dt className="mb-1 text-sm text-muted">{about.emailLabel}</dt>
                   <dd>
                     <a
                       href={`mailto:${profile.email}`}

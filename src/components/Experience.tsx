@@ -1,6 +1,9 @@
-import { experience, stats } from '../data/portfolio'
+import { useLocale } from '../i18n/LocaleContext'
 
 export function Experience() {
+  const { content } = useLocale()
+  const { experience, stats } = content
+
   return (
     <section id="experience" className="border-t border-white/5 bg-surface-elevated/50 px-6 py-24">
       <div className="mx-auto max-w-5xl">
@@ -8,7 +11,7 @@ export function Experience() {
           Experience
         </h2>
         <p className="mb-12 text-3xl font-bold tracking-tight sm:text-4xl">
-          主なプロジェクト
+          {experience.sectionTitle}
         </p>
 
         <article className="glass mb-12 overflow-hidden rounded-2xl">
@@ -30,19 +33,19 @@ export function Experience() {
 
             <dl className="mb-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted">
               <div className="flex gap-2">
-                <dt className="text-white/50">役割</dt>
+                <dt className="text-white/50">{experience.roleLabel}</dt>
                 <dd>{experience.role}</dd>
               </div>
               <div className="flex gap-2">
-                <dt className="text-white/50">期間</dt>
+                <dt className="text-white/50">{experience.periodLabel}</dt>
                 <dd>{experience.period}</dd>
               </div>
               <div className="flex gap-2">
-                <dt className="text-white/50">チーム</dt>
+                <dt className="text-white/50">{experience.teamLabel}</dt>
                 <dd>{experience.team}</dd>
               </div>
               <div className="flex gap-2">
-                <dt className="text-white/50">開発手法</dt>
+                <dt className="text-white/50">{experience.methodLabel}</dt>
                 <dd>{experience.method}</dd>
               </div>
             </dl>

@@ -1,6 +1,8 @@
-import { profile } from '../data/portfolio'
+import { useLocale } from '../i18n/LocaleContext'
 
 export function Contact() {
+  const { content } = useLocale()
+  const { profile, contact } = content
   const hasLinks = profile.email || profile.github || profile.linkedin
 
   return (
@@ -10,10 +12,10 @@ export function Contact() {
           Contact
         </h2>
         <p className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl">
-          お話しできれば嬉しいです
+          {contact.title}
         </p>
         <p className="mb-10 text-lg text-muted">
-          お仕事のご依頼やご質問など、お気軽にご連絡ください。
+          {contact.subtitle}
         </p>
 
         {hasLinks ? (
@@ -31,7 +33,7 @@ export function Contact() {
                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                   />
                 </svg>
-                メールを送る
+                {contact.sendEmail}
               </a>
             )}
             {profile.github && (
@@ -56,13 +58,7 @@ export function Contact() {
             )}
           </div>
         ) : (
-          <p className="text-sm text-muted">
-            連絡先は{' '}
-            <code className="rounded bg-white/5 px-2 py-0.5 text-emerald-300">
-              src/data/portfolio.ts
-            </code>{' '}
-            の profile にメールアドレス等を追加してください。
-          </p>
+          <p className="text-sm text-muted">{contact.noContactMessage}</p>
         )}
       </div>
     </section>

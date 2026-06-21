@@ -1,6 +1,9 @@
-import { skills } from '../data/portfolio'
+import { useLocale } from '../i18n/LocaleContext'
 
 export function Skills() {
+  const { content } = useLocale()
+  const { skills } = content
+
   return (
     <section id="skills" className="border-y border-white/5 bg-surface-elevated/50 px-6 py-24">
       <div className="mx-auto max-w-5xl">
@@ -8,11 +11,11 @@ export function Skills() {
           Skills
         </h2>
         <p className="mb-12 text-3xl font-bold tracking-tight sm:text-4xl">
-          技術スタック
+          {skills.title}
         </p>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {skills.map((group) => (
+          {skills.groups.map((group) => (
             <div key={group.category} className="glass rounded-2xl p-6">
               <h3 className="mb-4 text-lg font-semibold text-white">{group.category}</h3>
               <ul className="flex flex-wrap gap-2">
