@@ -1,6 +1,9 @@
-import { profile } from '../data/portfolio'
+import { useLocale } from '../i18n/LocaleContext'
 
 export function Hero() {
+  const { content } = useLocale()
+  const { profile, hero } = content
+
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-16">
       <div
@@ -33,7 +36,7 @@ export function Hero() {
             href="#experience"
             className="inline-flex items-center gap-2 rounded-full bg-emerald-500 px-6 py-3 text-sm font-semibold text-surface transition hover:bg-emerald-400"
           >
-            プロジェクトを見る
+            {hero.viewProjects}
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
@@ -42,7 +45,7 @@ export function Hero() {
             href="#work"
             className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/5"
           >
-            貢献した機能
+            {hero.viewContributions}
           </a>
         </div>
       </div>

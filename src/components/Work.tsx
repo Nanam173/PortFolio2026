@@ -1,8 +1,10 @@
-import { contributions } from '../data/portfolio'
+import { useLocale } from '../i18n/LocaleContext'
 
 export function Work() {
-  const featured = contributions.find((c) => c.featured)
-  const rest = contributions.filter((c) => !c.featured)
+  const { content } = useLocale()
+  const { work } = content
+  const featured = work.contributions.find((c) => c.featured)
+  const rest = work.contributions.filter((c) => !c.featured)
 
   return (
     <section id="work" className="px-6 py-24">
@@ -11,10 +13,10 @@ export function Work() {
           Work
         </h2>
         <p className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl">
-          主な貢献
+          {work.title}
         </p>
         <p className="mb-12 max-w-2xl text-muted">
-          設計から運用まで、プロダクトの価値向上に直結する機能を複数リードしてきました。
+          {work.subtitle}
         </p>
 
         {featured && (

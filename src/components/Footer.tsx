@@ -1,6 +1,8 @@
-import { profile } from '../data/portfolio'
+import { useLocale } from '../i18n/LocaleContext'
 
 export function Footer() {
+  const { content } = useLocale()
+  const { profile, footer } = content
   const year = new Date().getFullYear()
 
   return (
@@ -13,7 +15,7 @@ export function Footer() {
           href="#"
           className="text-sm text-muted transition hover:text-white"
         >
-          トップへ戻る ↑
+          {footer.backToTop}
         </a>
       </div>
     </footer>
